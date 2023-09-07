@@ -1,6 +1,8 @@
 
 export default function Quiz() {
     return (
-        <>Quiz page</>
+        <div>
+            Quiz layout
+        </div>
     );
 }
