@@ -1,8 +1,9 @@
+import { PageTransition } from "@/components/shared";
 
 export default function Quiz() {
     return (
-        <div>
-            Quiz layout
-        </div>
+        <PageTransition>
+            
+        </PageTransition>
     );
 }

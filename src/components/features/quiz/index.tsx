@@ -1,4 +1,3 @@
-'use client'
 
 const QuizPage = () => {
     return (
@@ -7,3 +6,13 @@ const QuizPage = () => {
 }
 
 export default QuizPage
+
+export async function getServerSideProps({ props }: any) {
+    console.log(props, 'props');
+
+    return {
+        props: {
+            onClick: () => console.log('click back ')
+        },
+    };
+}

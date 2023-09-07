@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-const withImages = require('next-images');
-
-const nextConfig = withImages({
-    images: {
-        dangerouslyAllowSVG: true,
+const nextConfig = ({
+    env: {
+        DATABASE_URL: process.env.DATABASE_URL,
     },
 })
 

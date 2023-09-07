@@ -1,10 +1,10 @@
 import { HomePage } from "@/components/features";
-import { ReactQueryHydrate } from "@/components/shared";
+import { PageTransition } from "@/components/shared";
 
 export default function Home() {
   return (
-    <ReactQueryHydrate>
+    <PageTransition>
       <HomePage />
-    </ReactQueryHydrate>
+    </PageTransition>
   );
 }

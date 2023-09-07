@@ -14,6 +14,7 @@ const Button: FC<ButtonProps> = ({ size, variant, children, ...props }) => {
         <button
             {...props}
             className={cn({
+                [`${props.className}`]: !!props.className,
                 'disabled': props.disabled,
                 [`${cnBySizeButton[size]} ${cnByVariantButton[variant]} font-[600] rounded-lg`]: true,
             })}
