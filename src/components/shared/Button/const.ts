@@ -11,7 +11,7 @@ enum VariantButton {
 
 const cnByVariantButton = {
   [VariantButton.primary]: "bg-primary text-white hover:bg-sky-700",
-  [VariantButton.default]: "bg-lightgray text-white hover:bg-sky-700",
+  [VariantButton.default]: "bg-lightgray text-primary hover:bg-gray",
 };
 
 const cnBySizeButton = {

@@ -6,6 +6,6 @@ export default function QuizLayout({
     children: React.ReactNode
 }) {
     return (
-        <div className="bg-lightgray min-h-screen">{children}</div>
+        <div className="bg-lightgray min-h-[91vh]">{children}</div>
     )
 }

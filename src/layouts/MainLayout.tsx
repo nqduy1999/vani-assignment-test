@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import vaniLogo from 'public/images/vani-logo.svg';
 import vaniLogoActive from 'public/images/vani-logo-active.svg'
 import vaniBack from 'public/images/back-icon.svg'
-import { PATHNAME } from "@/constant";
+import { NAME_BY_PATHNAME, PATHNAME } from "@/constant";
+import { useMemo } from "react";
 
 const MainLayout = ({
     children,
@@ -15,33 +16,34 @@ const MainLayout = ({
     onClick?: () => void
 }) => {
     const pathname = usePathname();
+
+    const isHome = useMemo(() => pathname === PATHNAME.HOME, [pathname])
     return (
         <div className="w-full min-h-screen">
-            <header style={
-                pathname !== PATHNAME.HOME ? {
-                    height: '72px'
-                } : {}
+            <div className="flex items-center justify-center" style={
+                isHome ? {} : { height: '7vh' }
             }>
-                {pathname === PATHNAME.HOME ? null : <Image
+                {isHome ? null : <Image
                     style={{
-                        top: '20px',
-                        left: '20px',
+                        top: '24px',
+                        left: '16px',
                         position: 'absolute',
                         cursor: 'pointer'
                     }}
-                    width={16} height={30} src={vaniBack} alt="" onClick={onClick} />}
+                    width={12} height={24} src={vaniBack} alt="" onClick={onClick} />}
+                {isHome ? null : <p style={{ fontWeight: '700', fontSize: '20px', color: '#333333', textTransform: 'uppercase', marginRight: '24px', marginTop: '16px' }}>{NAME_BY_PATHNAME[pathname as string]}</p>}
                 <Image
-                    width={100}
+                    width={80}
                     height={50}
-                    src={pathname !== PATHNAME.HOME ? vaniLogoActive : vaniLogo}
+                    src={isHome ? vaniLogo : vaniLogoActive}
                     alt="vani-logo"
                     style={{
                         position: 'absolute',
                         top: "20px",
-                        ...pathname !== PATHNAME.HOME ? { right: '20px' } : { left: '20px' }
+                        ...isHome ? { left: '20px' } : { right: '20px' }
                     }}
                 />
-            </header>
+            </div>
             {children}
         </div >
     )

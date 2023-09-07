@@ -15,12 +15,14 @@ const HomePage = () => {
     }
 
     return (
-        <div className="flex justify-between items-center flex-col h-screen w-full pb-5">
-            <div className="flex items-center justify-center bg-primary w-full px-4 md:py-16 py-32 md:flex-row flex-col">
-                <p className="md:text-4xl text-white md:w-[640px] text-lg w-[274px] text-center leading-8">Take the Quiz of the Vani Coins to get instantly 1,000 coins</p>
-                <Image src={backgroundImg} width={450} height={550} alt={'backgroundImg'} className='object-contain' />
+        <div className="flex justify-between items-center flex-col h-screen w-full">
+            <div className="flex items-center justify-center bg-primary w-full px-4 h-full flex-col">
+                <div className='flex items-center flex-col md:flex-row-reverse'>
+                    <p className="md:text-4xl text-white md:w-[640px] text-lg w-[unset] text-center leading-8">Take the Quiz of the Vani Coins to get instantly 1,000 coins</p>
+                    <Image src={backgroundImg} width={450} height={550} alt={'backgroundImg'} className='object-contain' />
+                </div>
+                <Button className='mt-16 md:min-w-[550px] min-w-[240px]' variant='default' size='lg' onClick={onRedirectToQuiz}>Start Quiz</Button>
             </div>
-            <Button className='md:min-w-[550px] min-w-[240px]' variant='primary' size='lg' onClick={onRedirectToQuiz}>Start Quiz</Button>
         </div>
     )
 }

@@ -8,14 +8,14 @@ interface ProgressBarProps {
     description?: string
 }
 
-const ProgressBar: FC<ProgressBarProps> = ({ colorBar = 'blue', total, current, title, description }) => {
+const ProgressBar: FC<ProgressBarProps> = ({ total, current, title, description }) => {
     return (
-        <div>
+        <div className="w-full">
             {title ? <h2 className="sr-only">{title}</h2> : <></>}
             <div>
                 {description ? <p className="text-xs font-medium text-gray-500">{description}</p> : <></>}
-                <div className="mt-4 overflow-hidden rounded-full bg-gray-200">
-                    <div className={`h-2 w-${current}/${total} rounded-full bg-[${colorBar}]`} />
+                <div className="mt-4 overflow-hidden bg-gray-200">
+                    <div className={`h-2 bg-primary`} style={{ width: `${(current / total) * 100}%` }} />
                 </div>
             </div>
         </div>

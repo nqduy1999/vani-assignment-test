@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_ROOT = 'localhost:3000';
+const API_ROOT = 'http://localhost:3000';
 
 const httpClient = axios.create({
     baseURL: API_ROOT
