@@ -1,10 +1,9 @@
 'use client'
 
 import { Button } from '@/components/shared';
-import { PATHNAME } from '@/constant'
+import { IMAGES, PATHNAME } from '@/constant'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
-import backgroundImg from 'public/images/background-home.png'
 
 const HomePage = () => {
 
@@ -19,9 +18,9 @@ const HomePage = () => {
             <div className="flex items-center justify-center bg-primary w-full px-4 h-full flex-col">
                 <div className='flex items-center flex-col md:flex-row-reverse'>
                     <p className="md:text-4xl text-white md:w-[640px] text-lg w-[unset] text-center leading-8">Take the Quiz of the Vani Coins to get instantly 1,000 coins</p>
-                    <Image src={backgroundImg} width={450} height={550} alt={'backgroundImg'} className='object-contain' />
+                    <Image src={IMAGES.background} width={450} height={550} alt={'backgroundImg'} className='object-contain' />
                 </div>
-                <Button className='mt-16 md:min-w-[550px] min-w-[240px]' variant='default' size='lg' onClick={onRedirectToQuiz}>Start Quiz</Button>
+                <Button className='mt-16 md:min-w-[550px] min-w-[240px] animate-bounce' variant='default' size='lg' onClick={onRedirectToQuiz}>Start Quiz</Button>
             </div>
         </div>
     )

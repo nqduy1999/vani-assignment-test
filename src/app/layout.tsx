@@ -1,5 +1,6 @@
 import "public/styles/globals.css";
 import Providers from "./provider";
+import { QuizContextProvider } from "@/contexts/quiz.context";
 
 export const metadata = {
   title: "vani assignment",
@@ -16,11 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="public/images/favicon.ico" sizes="any" />
-      </head>
       <body>
-        <Providers>{children}</Providers>
+        <QuizContextProvider>
+          <Providers>{children}</Providers>
+        </QuizContextProvider>
       </body>
     </html>
   );

@@ -12,6 +12,10 @@ module.exports = {
         'lightgray': "#F8F5F0",
         'black': "#333333"
       },
+      width: {
+        'modal-sm': '350px',
+        'modal-lg': '600px',
+      }
     },
   },
   plugins: [],

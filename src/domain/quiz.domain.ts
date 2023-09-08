@@ -16,3 +16,5 @@ export interface IQuiz {
   answers: Array<IAnswer>;
   hint: string;
 }
+
+export type CurrentQuizType = IQuiz & { ordNumber: number };
