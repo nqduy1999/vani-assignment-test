@@ -10,7 +10,8 @@ export interface QuizContextProps {
     onSelectedAnswer: (answer: string) => void,
     onCheckIsValidAnswer: (callback: any) => void,
     onSetData: (dataQuiz: IResponseList<IQuiz>) => void,
-    onNextQuiz: (callback?: any) => void
+    onNextQuiz: (callback?: any) => void,
+    onResetSelectedQuestion: () => void
 }
 
 const QuizContext = createContext<QuizContextProps | undefined>(undefined);
@@ -35,6 +36,10 @@ export const QuizContextProvider: FC<QuizContextProviderProps> = ({ children }) 
 
     const onResetSelectedAnswer = () => {
         setSelectedAnswers([])
+    }
+
+    const onResetSelectedQuestion = () => {
+        setIdSelectedQuiz('')
     }
 
     const onSelectedAnswer = (answer: string) => {
@@ -77,7 +82,8 @@ export const QuizContextProvider: FC<QuizContextProviderProps> = ({ children }) 
                 onCheckIsValidAnswer,
                 onSetData: onSetDataQuiz,
                 onNextQuiz,
-                total: data?.total || 0
+                total: data?.total || 0,
+                onResetSelectedQuestion
             }}
         >
             {children}

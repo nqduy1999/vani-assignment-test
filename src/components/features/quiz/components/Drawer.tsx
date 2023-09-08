@@ -11,7 +11,7 @@ interface DrawerQuestionProps {
 }
 
 const DrawerQuestion: FC<DrawerQuestionProps> = ({ visible, onCancel }) => {
-    const { onNextQuiz, currentQuiz } = useQuizContext() as QuizContextProps
+    const { onNextQuiz, currentQuiz, onResetSelectedQuestion } = useQuizContext() as QuizContextProps
     const router = useRouter()
     return (
         <main
@@ -28,7 +28,7 @@ const DrawerQuestion: FC<DrawerQuestionProps> = ({ visible, onCancel }) => {
                     (visible ? " translate-y-0 " : " translate-y-full ")
                 }
             >
-                <article className="relative w-screen max-w-lg pb-10 flex flex-col space-y-6 overflow-y-scroll h-full p-5">
+                <article className="relative items-center pb-10 flex flex-col space-y-6 overflow-y-scroll h-full p-5">
                     <div className="flex items-center justify-center flex-col gap-3">
                         <div className="w-[50px] h-[50px] flex items-center justify-center rounded-full bg-lightgray">
                             <Image width={30} height={30} src={IMAGES.icons.success} alt="success" />
@@ -36,7 +36,10 @@ const DrawerQuestion: FC<DrawerQuestionProps> = ({ visible, onCancel }) => {
                         <p className="text-primary font-bold">Correct!</p>
                         <p className="text-xl font-bold line-clamp-2">{currentQuiz?.hint || ''}</p>
                         <Button className="w-full" variant="primary" size="lg" onClick={() => {
-                            onNextQuiz(() => router.push(PATHNAME.RESULT))
+                            onNextQuiz(() => {
+                                router.push(PATHNAME.RESULT)
+                                onResetSelectedQuestion()
+                            })
                             onCancel && onCancel()
                         }}>Next</Button>
                     </div>

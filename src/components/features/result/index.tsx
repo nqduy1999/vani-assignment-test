@@ -16,7 +16,7 @@ const ResultPage = () => {
     return (
         <div className="flex justify-between items-center flex-col h-screen w-full">
             <div className="flex items-center justify-center bg-primary w-full px-4 h-full flex-col">
-                <div className='flex items-center flex-col md:flex-row-reverse gap-3'>
+                <div className='flex items-center flex-col gap-3'>
                     <p className="md:text-4xl text-white md:w-[640px] text-lg w-[unset] text-center text-2xl font-bold leading-8">You solved all the quizzes correctly!</p>
                     <p className='text-lg text-white mt-4'>1,000 Vani Coins Coupon has arrived</p>
                     <Image src={IMAGES.coupon} alt='coupon' width={150} height={50} className='mt-3' />
