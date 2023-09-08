@@ -11,7 +11,8 @@ export interface QuizContextProps {
     onCheckIsValidAnswer: (callback: any) => void,
     onSetData: (dataQuiz: IResponseList<IQuiz>) => void,
     onNextQuiz: (callback?: any) => void,
-    onResetSelectedQuestion: () => void
+    onResetSelectedQuestion: () => void,
+    onDoneQuiz: () => void
 }
 
 const QuizContext = createContext<QuizContextProps | undefined>(undefined);
@@ -68,10 +69,17 @@ export const QuizContextProvider: FC<QuizContextProviderProps> = ({ children }) 
         // Ended Quiz
         if (idxCurrentQuiz + 1 === data?.data?.length) {
             callback && callback()
+            onResetSelectedQuestion()
             return;
         }
         setIdSelectedQuiz(data?.data?.[idxCurrentQuiz + 1]?.id as string)
     }, [currentQuiz])
+
+    // Done QUiz 
+    const onDoneQuiz = () => {
+        onResetSelectedAnswer()
+        onResetSelectedQuestion()
+    }
 
     return (
         <QuizContext.Provider
@@ -83,7 +91,8 @@ export const QuizContextProvider: FC<QuizContextProviderProps> = ({ children }) 
                 onSetData: onSetDataQuiz,
                 onNextQuiz,
                 total: data?.total || 0,
-                onResetSelectedQuestion
+                onResetSelectedQuestion,
+                onDoneQuiz
             }}
         >
             {children}

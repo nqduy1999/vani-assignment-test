@@ -11,7 +11,7 @@ interface DrawerQuestionProps {
 }
 
 const DrawerQuestion: FC<DrawerQuestionProps> = ({ visible, onCancel }) => {
-    const { onNextQuiz, currentQuiz, onResetSelectedQuestion } = useQuizContext() as QuizContextProps
+    const { onNextQuiz, currentQuiz, onDoneQuiz } = useQuizContext() as QuizContextProps
     const router = useRouter()
     return (
         <main
@@ -24,7 +24,7 @@ const DrawerQuestion: FC<DrawerQuestionProps> = ({ visible, onCancel }) => {
         >
             <section
                 className={
-                    " w-screen bottom-0 right-0 absolute bg-white h-[250px] shadow-xl delay-400 duration-500 ease-in-out transition-all transform rounded-t-xl " +
+                    " w-screen bottom-0 right-0 absolute bg-white h-[270px] shadow-xl delay-400 duration-500 ease-in-out transition-all transform rounded-t-xl " +
                     (visible ? " translate-y-0 " : " translate-y-full ")
                 }
             >
@@ -35,13 +35,19 @@ const DrawerQuestion: FC<DrawerQuestionProps> = ({ visible, onCancel }) => {
                         </div>
                         <p className="text-primary font-bold">Correct!</p>
                         <p className="text-xl font-bold line-clamp-2">{currentQuiz?.hint || ''}</p>
-                        <Button className="w-full" variant="primary" size="lg" onClick={() => {
-                            onNextQuiz(() => {
-                                router.push(PATHNAME.RESULT)
-                                onResetSelectedQuestion()
-                            })
-                            onCancel && onCancel()
-                        }}>Next</Button>
+                        <div className="flex justify-center items-center gap-3 w-full">
+                            <Button className="min-w-[160px]" variant="default" size="lg" onClick={() => {
+                                onDoneQuiz()
+                                router.push(PATHNAME.RESULT_FAIL)
+                                onCancel && onCancel()
+                            }}>Done</Button>
+                            <Button className="min-w-[160px]" variant="primary" size="lg" onClick={() => {
+                                onNextQuiz(() => {
+                                    router.push(PATHNAME.RESULT)
+                                })
+                                onCancel && onCancel()
+                            }}>Next</Button>
+                        </div>
                     </div>
                 </article>
             </section>
